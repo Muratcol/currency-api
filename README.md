@@ -1,7 +1,11 @@
 # Currency API
 
-Express.js based and dynamic refresh settings implemented Turkish Lira based currency api.
+This project was generated with Express.js.
+
+In my project, 161 different currencies are kept up to date with a dynamic 0.5 second intervals. Default currency is Turkish Lira.
 MongoDB connection already setted. Authentication systems with JWT token setted.
+
+The app will automatically reload if you change any of the source files.
 
 
 ---
@@ -44,14 +48,14 @@ If you need to update `npm`, you can make it using `npm`! Cool right? After runn
       $ npm install -g yarn
 
 ---
-
-### MongoDB Account
+### mongoDB
+- ### mongoDB Account
 
 	If you don't have a mongoDB account, create a free mongoDB account below link
 
 	[official mongoDB website](https://www.mongodb.com/cloud/atlas/register)
 
-### MongoDB Connection
+- ### mongoDB Connection
 
 	After you create mongoDB account, create a new cluster and go to `appDir/config/env/config.env` and update the settings with below
 

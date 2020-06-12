@@ -15,19 +15,6 @@ const populateHelper = (query, population) => {
     return query.populate(population);
 }
 
-const questionSortHelper = (query, req) => {
-
-    const sortKey = req.query.sortBy;
-
-    if (sortKey === "most-answered"){
-        return query.sort("-answersCounter")
-    }
-    if (sortKey === "most-liked"){
-        return query.sort("-likesCounter")
-    }
-    return query.sort("-createdAt")
-}
-
 const paginationHelper = async (totalDocument, query, req) => {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 5;
@@ -64,6 +51,5 @@ const paginationHelper = async (totalDocument, query, req) => {
 module.exports = {
     searchHelper,
     populateHelper,
-    questionSortHelper,
     paginationHelper
 };

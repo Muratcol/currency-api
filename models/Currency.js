@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const moment = require('moment');
+const { now } = require('moment');
+moment().format();
 
 
 const CurrencySchema = new Schema({
@@ -14,7 +17,7 @@ const CurrencySchema = new Schema({
     },
     createdAt: {
         type: Date,
-        default: Date.now,
+        default: moment.utc()
     }
 });
 

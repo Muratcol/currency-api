@@ -1,10 +1,8 @@
-const express = require("express");
-const router = express.Router();
 const asyncErrorWrapper = require("express-async-handler");
 const cheerio = require("cheerio");
 const axios = require("axios");
 const Currency = require("../../models/Currency");
-
+const CustomError = require('../../helpers/error/CustomError');
 let allCurrencies = new Array();
 
 const chartData = asyncErrorWrapper(async (req, res, next) => {
@@ -41,14 +39,14 @@ const chartData = asyncErrorWrapper(async (req, res, next) => {
 
 setInterval(() => {
   chartData()
-}, 60 * 5 * 1000)
+}, 60 * 1 * 1000)
 
 
 const updateChart = asyncErrorWrapper(async (req, res, next) => {
 
   const chartDatas = await Currency.find();
 
-  if (chartDatas.length === 0) return next(new CustomError("There's no answer for this question yet", 404))
+  if (chartDatas.length === 0) return next(new CustomError("No new data in database", 404))
 
   return res.status(200)
       .json({

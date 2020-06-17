@@ -1,5 +1,3 @@
-const User = require("../models/User");
-const CustomError = require('../helpers/error/CustomError');
 const asyncErrorWrapper = require('express-async-handler');
 
 

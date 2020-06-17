@@ -1,5 +1,3 @@
-const express = require("express");
-const router = express.Router();
 const asyncErrorWrapper = require("express-async-handler");
 const cheerio = require("cheerio");
 const axios = require("axios");

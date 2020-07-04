@@ -22,10 +22,10 @@ const sendJwtToClient = (user, res) =>{
             name: user.name,
             email: user.email,
             imgUrl: user.profile_image,
-            title: title,
-            about: about,
-            place: place,
-            website: website
+            title,
+            about,
+            place,
+            website
         }
     });
 };
@@ -43,4 +43,4 @@ module.exports = {
     isTokenIncluded,
     getAccessTokenFromHeader
 }
-    // Response
+

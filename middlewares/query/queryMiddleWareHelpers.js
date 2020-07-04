@@ -19,7 +19,7 @@ const paginationHelper = async (totalDocument, query, req) => {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 5;
 
-    const startIndex = (page-1) * limit;
+    const startIndex = (page -  1) * limit;
     const endIndex = page * limit;
 
     const pagination = {};
@@ -32,7 +32,7 @@ const paginationHelper = async (totalDocument, query, req) => {
     }
     if (endIndex < total) {
         pagination.next = {
-            page: page+1,
+            page: page + 1,
             limit: limit
         }
     }

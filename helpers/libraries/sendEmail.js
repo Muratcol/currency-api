@@ -10,7 +10,6 @@ const sendEmail = async(mailOptions) => {
             pass: process.env.SMTP_GMAIL_PASS // password
         }
     });
-    console.log(process.env.SMTP_GMAIL_USER, process.env.SMTP_GMAIL_PASS)
     let info = await transporter.sendMail(mailOptions);
     console.log(`Message sent: ${info.messageId}`)
 };

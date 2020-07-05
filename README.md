@@ -11,7 +11,7 @@ The app will automatically reload if you change any of the source files.
 ---
 ## Requirements
 
-For development, you will need MongoDB account, Node.js and a node global package, Yarn, installed in your environement.
+For development, you will need MongoDB account, Node.js and a node global package, installed in your environement.
 
 ### Node
 - #### Node installation on Windows
@@ -66,7 +66,7 @@ If you need to update `npm`, you can make it using `npm`! Cool right? After runn
 
     $ git clone https://github.com/Muratcol/currency-api
     $ cd currency-api
-    $ yarn install
+    $ npm install
 
 ## Configure app
 
@@ -82,8 +82,8 @@ Open `appDir/config/env/config.env` then edit it with your settings.
 
 ## Running the project
 
-    $ yarn start
+    $ npm start
 
 ## Simple build for production
 
-    $ yarn build
+    $ npm build

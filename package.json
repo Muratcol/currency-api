@@ -6,9 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon ./bin/www",
-    "dev": "nodemon server.js",
-    "import": "node dummy-generator --import",
-    "delete": "node dummy-generator --delete"
+    "dev": "nodemon server.js"
   },
   "keywords": [
     "express",

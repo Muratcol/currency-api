@@ -35,7 +35,6 @@ app.use(customErrorHandler)
 app.use('/', appRoutes);
 app.use(favicon(__dirname + '/public/favicon.ico'));
 const PORT = process.env.PORT;
-// catch 404 and forward to error handler
 app.use(function(req, res, next) {
   res.render('index');
 });

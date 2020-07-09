@@ -140,8 +140,6 @@ const resetpassword = asyncErrorWrapper(async(req, res, next) => {
 // User details update
 const editDetails = asyncErrorWrapper(async(req, res, next) => {
     const editInformation = req.body;
-    console.log(editInformation)
-    // const {authorization} = req.body;
     const user = await User.findByIdAndUpdate ( req.user.id, editInformation, {
         new: true,
         runValidators: true

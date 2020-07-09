@@ -1,4 +1,5 @@
 const User = require("../../models/User");
+const Alert = require("../../models/Alert");
 const CustomError = require("../../helpers/error/CustomError");
 const asyncErrorWrapper = require("express-async-handler");
 
@@ -17,9 +18,9 @@ const checkUserExist = asyncErrorWrapper(async (req, res, next) => {
 const checkAlertExist = asyncErrorWrapper(async (req, res, next) => {
   const { id } = req.params;
 
-  const alert = await User.findById(id);
+  const alert = await Alert.findById(id);
 
-  if (!user)
+  if (!alert)
     return next(new CustomError("There is no such an alert with that id", 400));
 
   req.data = alert;

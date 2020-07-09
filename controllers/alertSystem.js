@@ -29,4 +29,20 @@ const deleteAlert = asyncErrorWrapper(async (req, res, next) => {
     });
 
 });
-module.exports = { createAlert, deleteAlert };
+
+const editAlert = asyncErrorWrapper(async(req, res, next) => {
+  const getNewAlert = req.body;
+  const {id} = req.params;
+  const alert = await Alert.findByIdAndUpdate ( id, getNewAlert, {
+      new: true,
+      runValidators: true
+  });
+  await alert.save()
+
+  return res.status(200)
+  .json({
+      success :  true,
+      message : "Data update succesfull"
+  });
+});
+module.exports = { createAlert, deleteAlert, editAlert };

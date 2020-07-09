@@ -5,6 +5,7 @@ const admin = require("./admin");
 const main = require("./main");
 const currency = require("./currency");
 const contact = require("./contact");
+const alertSystem = require("./alertSystem");
 const router = express.Router();
 
 router.use("/auth", auth);
@@ -13,5 +14,6 @@ router.use("/admin", admin);
 router.use("/", main);
 router.use("/currencies", currency);
 router.use("/contact", contact);
+router.use("/alert", alertSystem);
 
 module.exports = router;

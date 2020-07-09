@@ -2,7 +2,7 @@ const express = require('express');
 const {register, getUser, login, logout, imageUpload, forgotPassword, resetpassword, editDetails} = require('../controllers/auth');
 const {getAccessToRoute} = require('../middlewares/authorization/auth')
 const profileImageUpload = require('../middlewares/libraries/profileImageUpload');
-const cors  = require('cors')
+const cors  = require('cors');
 // api/auth will come here 
 
 

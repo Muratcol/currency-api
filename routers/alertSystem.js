@@ -3,9 +3,10 @@ const {getAccessToRoute} = require('../middlewares/authorization/auth');
 const {createAlert, deleteAlert, editAlert} = require('../controllers/alertSystem')
 const {checkAlertExist} = require('../middlewares/database/databaseErrorHelpers')
 const router = express.Router();
+const cors  = require('cors');
 // Block User
 
-
+router.use(cors())
 router.use([getAccessToRoute]); 
 
 router.post("/createAlert", createAlert);

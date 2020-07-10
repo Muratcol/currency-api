@@ -118,7 +118,13 @@ const isLoggedIn = (req, res, next) => {
         
     const accessToken = getAccessTokenFromHeader(req);   
     jwt.verify(accessToken, JWT_SECRET_KEY,(err, decoded) => {
-        if (err) next(new CustomError("You are not authorized to access this route", 401));
+        if (err) {
+            return res.status(401)
+            .json({
+                success:false,
+                message: "You are not authorized to access this route"
+            })
+        };
         req.user = {
             id: decoded.id,
             name: decoded.name,

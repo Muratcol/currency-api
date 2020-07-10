@@ -4,6 +4,8 @@ const asyncErrorWrapper = require('express-async-handler');
 const {sendJwtToClient} = require('../helpers/authorization/tokenHelpers');
 const {validateUserInput, comparePassword} = require('../helpers/inputs/inputHelpers');
 const sendEmail = require('../helpers/libraries/sendEmail');
+const {isTokenIncluded, getAccessTokenFromHeader} = require('../helpers/authorization/tokenHelpers');
+const jwt = require('jsonwebtoken');
 // A better error handler then try-catch (express-async-handler)
 
 const register = asyncErrorWrapper(async (req, res, next) => {
@@ -110,7 +112,26 @@ const forgotPassword = asyncErrorWrapper(async(req, res, next) => {
         return next(new CustomError("Email could not be sent", 500))
     }
 })
-
+const isLoggedIn = (req, res, next) => {
+    const {JWT_SECRET_KEY} = process.env;
+    if (!isTokenIncluded(req)) next(new CustomError("You are not authorized to access this route", 401))
+        
+    const accessToken = getAccessTokenFromHeader(req);   
+    jwt.verify(accessToken, JWT_SECRET_KEY,(err, decoded) => {
+        if (err) next(new CustomError("You are not authorized to access this route", 401));
+        req.user = {
+            id: decoded.id,
+            name: decoded.name,
+            accessToken: accessToken
+        }
+        
+        return res.status(200)
+        .json({
+            success:true,
+            userData: req.user
+        })
+    })
+};
 
 const resetpassword = asyncErrorWrapper(async(req, res, next) => {
 
@@ -162,5 +183,6 @@ module.exports = {
     logout,
     forgotPassword,
     resetpassword,
-    editDetails
+    editDetails,
+    isLoggedIn
 };

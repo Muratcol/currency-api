@@ -45,4 +45,18 @@ const editAlert = asyncErrorWrapper(async(req, res, next) => {
       message : "Data update succesfull"
   });
 });
-module.exports = { createAlert, deleteAlert, editAlert };
+
+
+const getAlerts = asyncErrorWrapper(async (req, res, next) => {
+
+  const alert = await Alert.find();
+
+  return res.status(200)
+  .json({
+      success: true,
+      data: alert
+  });
+});
+
+
+module.exports = { createAlert, deleteAlert, editAlert, getAlerts };

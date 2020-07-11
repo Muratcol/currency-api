@@ -11,8 +11,9 @@ router.use([getAccessToRoute]);
 
 router.get("/getAllAlerts", getAlerts);
 router.post("/createAlert", createAlert);
-router.delete('/deleteAlert/:id', checkAlertExist, deleteAlert)
-router.put('/editAlert/:id', checkAlertExist, editAlert)
+router.delete('/deleteAlert/:id', checkAlertExist, deleteAlert);
+router.put('/editAlert/:id', checkAlertExist, editAlert);
+
 // router.use(checkUserExist);
 
 

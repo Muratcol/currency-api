@@ -2,8 +2,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const AlertSchema = new Schema({
-  userName: {
-    type: String,
+  user: {
+      type: mongoose.Schema.ObjectId,
+      required:true,
+      ref: "User"
   },
   pair: {
     type: String,

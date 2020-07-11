@@ -58,7 +58,11 @@ const userSchema = new Schema({
     },
     resetPasswordExpire: {
         type: Date
-    }
+    },
+    alerts: [{
+        type: mongoose.Schema.ObjectId,
+        ref: "Alert"
+        }],
 });
 
 userSchema.methods.getResetPasswordTokenFromUser = function() {

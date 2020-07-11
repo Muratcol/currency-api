@@ -1,13 +1,23 @@
 const Alert = require("../models/Alert");
 const asyncErrorWrapper = require("express-async-handler");
 const CustomError = require("../helpers/error/CustomError");
+const User = require("../models/User");
 
 const createAlert = asyncErrorWrapper(async (req, res, next) => {
   const alertForm = req.body;
 
   const alert = await Alert.create({
     ...alertForm,
+    user: req.user.id
   });
+
+  const id = req.user.id;
+
+  const user = await User.findById(id);
+
+  user.alerts.push(alert._id);
+  await user.save();
+
 
   res.status(200).json({
     success: true,
@@ -49,7 +59,10 @@ const editAlert = asyncErrorWrapper(async(req, res, next) => {
 
 const getAlerts = asyncErrorWrapper(async (req, res, next) => {
 
-  const alert = await Alert.find();
+  const id = req.user.id;
+  const alert = await Alert.find( {
+    user: id
+  });
 
   return res.status(200)
   .json({

@@ -56,6 +56,13 @@ const editAlert = asyncErrorWrapper(async(req, res, next) => {
   });
 });
 
+const sendEmailNotify = asyncErrorWrapper(async (req, res, next) => {
+  const id = req.body;
+  const alert = await Alert.findById(id);
+  const userId = alert.user;
+  const user = await User.findById(userId);
+  console.log(user);
+})
 
 const getAlerts = asyncErrorWrapper(async (req, res, next) => {
 
@@ -72,4 +79,4 @@ const getAlerts = asyncErrorWrapper(async (req, res, next) => {
 });
 
 
-module.exports = { createAlert, deleteAlert, editAlert, getAlerts };
+module.exports = { createAlert, deleteAlert, editAlert, getAlerts, sendEmailNotify };

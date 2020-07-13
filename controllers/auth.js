@@ -24,6 +24,7 @@ const register = asyncErrorWrapper(async (req, res, next) => {
 // Login Function
 const login = asyncErrorWrapper(async(req, res, next) => {
     const {email, password} = req.body;
+    if( await User.findOne({email}) == null) return next(new CustomError("Please check your inputs", 400))
     if (!validateUserInput(email, password)) return next(new CustomError("Please check your inputs", 400))
     const user = await User.findOne({email}).select("+password");
     if (!comparePassword(password, user.password)) return next(new CustomError("Please check your inputs", 400))

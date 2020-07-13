@@ -25,7 +25,7 @@ const AlertSchema = new Schema({
   emailNotify: {
     type: Boolean,
   },
-  alerStatus: {
+  alertStatus: {
     type: Boolean,
     default: true
   },

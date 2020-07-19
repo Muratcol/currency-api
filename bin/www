@@ -46,7 +46,9 @@ io.on("connection", (socket) => {
       message: data.message,
       room: data.room
     });
+    console.log(data)
   });
+ 
 });
 
 

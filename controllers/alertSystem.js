@@ -92,10 +92,21 @@ const getAlerts = asyncErrorWrapper(async (req, res, next) => {
   });
 });
 
+const getSingleAlert = asyncErrorWrapper(async (req, res, next) => {
+  const id = req.params.id;
+  const alert = await Alert.findById(id);
+  
+  return res.status(200).json({
+    success: true,
+    data: alert
+  });
+});
+
 module.exports = {
   createAlert,
   deleteAlert,
   editAlert,
   getAlerts,
   sendEmailNotify,
+  getSingleAlert
 };

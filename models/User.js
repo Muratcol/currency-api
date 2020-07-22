@@ -109,6 +109,11 @@ userSchema.pre("save", function(next) {
     });
 });
 
+userSchema.post("remove", async function(){
+    await Alert.deleteMany({
+        user: this._id
+    });
+})
 
 
 module.exports = mongoose.model("User", userSchema);
